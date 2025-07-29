@@ -1,0 +1,1034 @@
+# Copipe Theme
+# Copyright (C) 2025 Copipe Theme
+# This file is distributed under the same license as the Copipe Theme package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Copipe Theme 2.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/copipe-theme/issues\n"
+"POT-Creation-Date: 2025-01-07 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: WP-CLI 2.8.1\n"
+"X-Domain: copipe-theme\n"
+
+#: 404.php:25
+msgid "ページが見つかりません"
+msgstr ""
+
+#: 404.php:31
+msgid "お探しのページは削除されたか、URLが変更された可能性があります。"
+msgstr ""
+
+#: 404.php:36
+msgid "アクセスしようとしたURL"
+msgstr ""
+
+#: 404.php:45
+msgid "お探しの情報を検索してみてください"
+msgstr ""
+
+#: 404.php:53
+msgid "キーワードを入力..."
+msgstr ""
+
+#: 404.php:54
+msgid "サイト内検索"
+msgstr ""
+
+#: 404.php:61
+msgid "例: \"WordPress\", \"PHP\", \"CSS\" など"
+msgstr ""
+
+#: 404.php:67
+msgid "こちらもおすすめ"
+msgstr ""
+
+#: 404.php:75
+msgid "ホーム"
+msgstr ""
+
+#: 404.php:76
+msgid "トップページに戻る"
+msgstr ""
+
+#: 404.php:85
+msgid "コピペ集"
+msgstr ""
+
+#: 404.php:86
+msgid "すべてのスニペット"
+msgstr ""
+
+#: 404.php:96
+msgid "サイトについて"
+msgstr ""
+
+#: 404.php:97
+msgid "サイトの説明"
+msgstr ""
+
+#: 404.php:107
+msgid "お問い合わせ"
+msgstr ""
+
+#: 404.php:108
+msgid "ご質問・ご要望"
+msgstr ""
+
+#: 404.php:119
+msgid "人気の記事"
+msgstr ""
+
+#: 404.php:145
+msgid "読む"
+msgstr ""
+
+#: 404.php:154
+msgid "人気記事がまだありません。"
+msgstr ""
+
+#: 404.php:161
+msgid "カテゴリから探す"
+msgstr ""
+
+#: 404.php:182
+msgid "カテゴリがありません。"
+msgstr ""
+
+#: 404.php:191
+msgid "月別アーカイブ"
+msgstr ""
+
+#: 404.php:213
+msgid "アーカイブがありません。"
+msgstr ""
+
+#: 404.php:221
+msgid "最新コメント"
+msgstr ""
+
+#: 404.php:237
+msgid "より"
+msgstr ""
+
+#: 404.php:246
+msgid "コメントがありません。"
+msgstr ""
+
+#: 404.php:258
+msgid "リンク切れを見つけた場合"
+msgstr ""
+
+#: 404.php:261
+msgid "サイト内のリンクからこのページにアクセスした場合は、%sからご報告ください。"
+msgstr ""
+
+#: 404.php:262
+msgid "お問い合わせページ"
+msgstr ""
+
+#: archive.php:27
+msgid "%s のアーカイブ"
+msgstr ""
+
+#: archive.php:57
+msgid "開発効率×収益化を加速する<br>Copipe スニペットライブラリ"
+msgstr ""
+
+#: archive.php:110
+msgid "このアーカイブ内を検索..."
+msgstr ""
+
+#: archive.php:111
+msgid "アーカイブ内検索"
+msgstr ""
+
+#: archive.php:131
+msgid "並び順を選択"
+msgstr ""
+
+#: archive.php:134
+msgid "新しい順"
+msgstr ""
+
+#: archive.php:135
+msgid "タイトル順"
+msgstr ""
+
+#: archive.php:136
+msgid "コメント数順"
+msgstr ""
+
+#: archive.php:137
+msgid "更新日順"
+msgstr ""
+
+#: archive.php:156
+msgid "「%1$s」の検索結果（%2$s内）: %3$d 件見つかりました"
+msgstr ""
+
+#: archive.php:172
+msgid "前へ"
+msgstr ""
+
+#: archive.php:173
+msgid "次へ"
+msgstr ""
+
+#: archive.php:201
+msgid "検索結果が見つかりませんでした"
+msgstr ""
+
+#: archive.php:202
+msgid "「%s」に一致する記事は見つかりませんでした。"
+msgstr ""
+
+#: archive.php:204
+msgid "まだ記事がありません"
+msgstr ""
+
+#: archive.php:205
+msgid "このアーカイブにはまだ記事が投稿されていません。"
+msgstr ""
+
+#: archive.php:210
+msgid "ホームに戻る"
+msgstr ""
+
+#: archive.php:215
+msgid "すべての記事を見る"
+msgstr ""
+
+#: archive.php:227
+msgid "関連カテゴリー"
+msgstr ""
+
+#: archive.php:248
+msgid "関連カテゴリーがありません。"
+msgstr ""
+
+#: archive.php:256
+msgid "人気タグ"
+msgstr ""
+
+#: archive.php:275
+msgid "タグがありません。"
+msgstr ""
+
+#: archive.php:283
+msgid "月別アーカイブ"
+msgstr ""
+
+#: archive.php:297
+msgid "アーカイブがありません。"
+msgstr ""
+
+#: archive.php:305
+msgid "最新コメント"
+msgstr ""
+
+#: archive.php:322
+msgid "より"
+msgstr ""
+
+#: archive.php:331
+msgid "コメントがありません。"
+msgstr ""
+
+#: archive.php:343
+msgid "%s の更新をフォロー"
+msgstr ""
+
+#: archive.php:346
+msgid "RSSフィードで最新記事をチェックしよう！"
+msgstr ""
+
+#: archive.php:351
+msgid "RSSで購読"
+msgstr ""
+
+#: comments.php:30
+msgctxt "comments title"
+msgid "1つのコメント"
+msgstr ""
+
+#: comments.php:32
+msgctxt "comments title"
+msgid "%1$sつのコメント"
+msgid_plural "%1$sつのコメント"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:47
+msgid "前のコメント"
+msgstr ""
+
+#: comments.php:51
+msgid "次のコメント"
+msgstr ""
+
+#: comments.php:59
+msgid "コメントは締め切られています。"
+msgstr ""
+
+#: comments.php:68
+msgctxt "noun"
+msgid "コメント"
+msgstr ""
+
+#: comments.php:69
+msgid "コメントを入力してください..."
+msgstr ""
+
+#: comments.php:74
+msgid "名前"
+msgstr ""
+
+#: comments.php:79
+msgid "メールアドレス"
+msgstr ""
+
+#: comments.php:81
+msgid "※ メールアドレスは公開されません"
+msgstr ""
+
+#: comments.php:85
+msgid "ウェブサイト"
+msgstr ""
+
+#: comments.php:96
+msgid "コメントを残す"
+msgstr ""
+
+#: comments.php:97
+msgid "%s への返信"
+msgstr ""
+
+#: comments.php:100
+msgid "返信をキャンセル"
+msgstr ""
+
+#: comments.php:101
+msgid "コメントを投稿"
+msgstr ""
+
+#: comments.php:104
+msgid "コメント投稿について"
+msgstr ""
+
+#: comments.php:106
+msgid "技術的な質問も歓迎します"
+msgstr ""
+
+#: comments.php:107
+msgid "コードの改善案があればお聞かせください"
+msgstr ""
+
+#: comments.php:108
+msgid "スパムや不適切な投稿は削除される場合があります"
+msgstr ""
+
+#: functions.php:36
+msgid "続きを読む"
+msgstr ""
+
+#: functions.php:65
+msgid "Copipe Theme設定"
+msgstr ""
+
+#: functions.php:66
+msgid "テーマ設定"
+msgstr ""
+
+#: functions.php:79
+msgid "AdSense クライアントID"
+msgstr ""
+
+#: functions.php:83
+msgid "ヘッダー広告スロット"
+msgstr ""
+
+#: functions.php:87
+msgid "コンテンツ内広告スロット"
+msgstr ""
+
+#: functions.php:91
+msgid "フッター広告スロット"
+msgstr ""
+
+#: functions.php:96
+msgid "設定を保存しました。"
+msgstr ""
+
+#: functions.php:180
+msgid "コピーしました！"
+msgstr ""
+
+#: functions.php:181
+msgid "コピーに失敗しました"
+msgstr ""
+
+#: header.php:12
+msgid "Skip to content"
+msgstr ""
+
+#: inc/admin-settings.php:34
+msgid "Copipe Theme設定"
+msgstr ""
+
+#: inc/admin-settings.php:35
+msgid "テーマ設定"
+msgstr ""
+
+#: inc/admin-settings.php:40
+msgid "AdSense設定"
+msgstr ""
+
+#: inc/admin-settings.php:41
+msgid "AdSense"
+msgstr ""
+
+#: inc/admin-settings.php:47
+msgid "SEO設定"
+msgstr ""
+
+#: inc/admin-settings.php:48
+msgid "SEO"
+msgstr ""
+
+#: inc/admin-settings.php:54
+msgid "パフォーマンス設定"
+msgstr ""
+
+#: inc/admin-settings.php:55
+msgid "パフォーマンス"
+msgstr ""
+
+#: inc/admin-settings.php:61
+msgid "セキュリティ設定"
+msgstr ""
+
+#: inc/admin-settings.php:62
+msgid "セキュリティ"
+msgstr ""
+
+#: inc/customizer.php:18
+msgid "サイト基本設定"
+msgstr ""
+
+#: inc/customizer.php:20
+msgid "サイトの基本的な設定を行います。"
+msgstr ""
+
+#: inc/customizer.php:27
+msgid "サイトロゴ"
+msgstr ""
+
+#: inc/customizer.php:28
+msgid "ヘッダーに表示するロゴ画像をアップロードしてください。推奨サイズ: 200x60px"
+msgstr ""
+
+#: inc/customizer.php:36
+msgid "ファビコン"
+msgstr ""
+
+#: inc/customizer.php:37
+msgid "ブラウザタブに表示されるアイコン。推奨サイズ: 32x32px"
+msgstr ""
+
+#: inc/customizer.php:45
+msgid "サイト詳細説明"
+msgstr ""
+
+#: inc/customizer.php:46
+msgid "SEOやAboutページで使用される詳細な説明文"
+msgstr ""
+
+#: inc/customizer.php:53
+msgid "ヘッダー設定"
+msgstr ""
+
+#: inc/customizer.php:60
+msgid "ヘッダーレイアウト"
+msgstr ""
+
+#: inc/customizer.php:65
+msgid "デフォルト"
+msgstr ""
+
+#: inc/customizer.php:66
+msgid "中央寄せ"
+msgstr ""
+
+#: inc/customizer.php:67
+msgid "ミニマル"
+msgstr ""
+
+#: inc/customizer.php:76
+msgid "ヘッダーを固定"
+msgstr ""
+
+#: inc/customizer.php:77
+msgid "スクロール時にヘッダーを画面上部に固定します"
+msgstr ""
+
+#: inc/customizer.php:86
+msgid "検索ボタンを表示"
+msgstr ""
+
+#: inc/customizer.php:94
+msgid "カラー設定"
+msgstr ""
+
+#: inc/customizer.php:101
+msgid "プライマリカラー"
+msgstr ""
+
+#: inc/customizer.php:102
+msgid "サイトのメインカラーです"
+msgstr ""
+
+#: inc/customizer.php:110
+msgid "セカンダリカラー"
+msgstr ""
+
+#: inc/customizer.php:119
+msgid "アクセントカラー"
+msgstr ""
+
+#: inc/customizer.php:127
+msgid "タイポグラフィ"
+msgstr ""
+
+#: inc/customizer.php:134
+msgid "本文フォント"
+msgstr ""
+
+#: inc/customizer.php:140
+msgid "Noto Sans JP"
+msgstr ""
+
+#: inc/customizer.php:141
+msgid "ヒラギノ角ゴシック"
+msgstr ""
+
+#: inc/customizer.php:142
+msgid "メイリオ"
+msgstr ""
+
+#: inc/customizer.php:143
+msgid "游ゴシック"
+msgstr ""
+
+#: inc/customizer.php:144
+msgid "システムフォント"
+msgstr ""
+
+#: inc/customizer.php:151
+msgid "見出しフォント"
+msgstr ""
+
+#: inc/customizer.php:157
+msgid "Noto Sans JP"
+msgstr ""
+
+#: inc/customizer.php:158
+msgid "ヒラギノ角ゴシック"
+msgstr ""
+
+#: inc/customizer.php:159
+msgid "メイリオ"
+msgstr ""
+
+#: inc/customizer.php:160
+msgid "游ゴシック"
+msgstr ""
+
+#: inc/customizer.php:161
+msgid "システムフォント"
+msgstr ""
+
+#: inc/customizer.php:168
+msgid "基本フォントサイズ"
+msgstr ""
+
+#: inc/customizer.php:169
+msgid "px単位（14-20推奨）"
+msgstr ""
+
+#: inc/customizer.php:181
+msgid "レイアウト設定"
+msgstr ""
+
+#: inc/customizer.php:188
+msgid "コンテナ最大幅"
+msgstr ""
+
+#: inc/customizer.php:189
+msgid "px単位（1000-1400推奨）"
+msgstr ""
+
+#: inc/customizer.php:202
+msgid "サイドバーを表示"
+msgstr ""
+
+#: inc/customizer.php:210
+msgid "アーカイブレイアウト"
+msgstr ""
+
+#: inc/customizer.php:215
+msgid "グリッド表示"
+msgstr ""
+
+#: inc/customizer.php:216
+msgid "リスト表示"
+msgstr ""
+
+#: inc/customizer.php:217
+msgid "マソンリー表示"
+msgstr ""
+
+#: inc/customizer.php:225
+msgid "コード表示設定"
+msgstr ""
+
+#: inc/customizer.php:232
+msgid "コードテーマ"
+msgstr ""
+
+#: inc/customizer.php:237
+msgid "デフォルト"
+msgstr ""
+
+#: inc/customizer.php:238
+msgid "Tomorrow Night"
+msgstr ""
+
+#: inc/customizer.php:239
+msgid "Dracula"
+msgstr ""
+
+#: inc/customizer.php:240
+msgid "Monokai"
+msgstr ""
+
+#: inc/customizer.php:241
+msgid "GitHub"
+msgstr ""
+
+#: inc/customizer.php:250
+msgid "行番号を表示"
+msgstr ""
+
+#: inc/customizer.php:259
+msgid "コピーボタンを表示"
+msgstr ""
+
+#: inc/customizer.php:267
+msgid "フッター設定"
+msgstr ""
+
+#: inc/customizer.php:274
+msgid "フッターテキスト"
+msgstr ""
+
+#: inc/customizer.php:275
+msgid "コピーライト表示をカスタマイズできます"
+msgstr ""
+
+#: inc/customizer.php:315
+msgid "高度な設定"
+msgstr ""
+
+#: inc/customizer.php:322
+msgid "カスタムCSS"
+msgstr ""
+
+#: inc/customizer.php:323
+msgid "追加のCSSコードを記述できます"
+msgstr ""
+
+#: inc/customizer.php:331
+msgid "カスタムJavaScript"
+msgstr ""
+
+#: inc/customizer.php:332
+msgid "追加のJavaScriptコードを記述できます"
+msgstr ""
+
+#: inc/customizer.php:340
+msgid "Google Analytics ID"
+msgstr ""
+
+#: inc/customizer.php:341
+msgid "GA4の測定ID（G-XXXXXXXXXX）"
+msgstr ""
+
+#: inc/security.php:224
+msgid "ログイン試行回数が上限に達しました。%d分後に再度お試しください。"
+msgstr ""
+
+#: inc/security.php:243
+msgid "REST APIへのアクセスが制限されています。"
+msgstr ""
+
+#: inc/security.php:255
+msgid "スパムコメントが検出されました。"
+msgstr ""
+
+#: inc/security.php:264
+msgid "コメント投稿回数の制限に達しました。"
+msgstr ""
+
+#: inc/security.php:296
+msgid "ファイルサイズが大きすぎます。"
+msgstr ""
+
+#: inc/security.php:302
+msgid "ファイル名に無効な文字が含まれています。"
+msgstr ""
+
+#: inc/security.php:309
+msgid "サポートされていないファイル形式です。"
+msgstr ""
+
+#: inc/security.php:324
+msgid "ログイン情報が正しくありません。"
+msgstr ""
+
+#: inc/utils.php:207
+msgid "ホーム"
+msgstr ""
+
+#: inc/utils.php:218
+msgid "%s の記事"
+msgstr ""
+
+#: inc/utils.php:237
+msgid "ページが見つかりません"
+msgstr ""
+
+#: inc/utils.php:250
+msgid "パンくずリスト"
+msgstr ""
+
+#: inc/utils.php:359
+msgid "この記事をシェア"
+msgstr ""
+
+#: inc/utils.php:550
+msgid "目次"
+msgstr ""
+
+#: inc/utils.php:622
+msgid "「%s」の検索結果"
+msgstr ""
+
+#: inc/utils.php:679
+msgid "%d分で読めます"
+msgid_plural "%d分で読めます"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/utils.php:684
+msgid "推定読了時間"
+msgstr ""
+
+#: inc/utils.php:717
+msgid "%d分前"
+msgstr ""
+
+#: inc/utils.php:718
+msgid "%d時間前"
+msgstr ""
+
+#: inc/utils.php:719
+msgid "%d日前"
+msgstr ""
+
+#: inc/utils.php:720
+msgid "%dヶ月前"
+msgstr ""
+
+#: inc/utils.php:722
+msgid "%d年前"
+msgstr ""
+
+#: inc/utils.php:715
+msgid "今"
+msgstr ""
+
+#: page.php:25
+msgid "パンくずリスト"
+msgstr ""
+
+#: page.php:28
+msgid "ホーム"
+msgstr ""
+
+#: page.php:66
+msgid "公開: %s"
+msgstr ""
+
+#: page.php:73
+msgid "更新: %s"
+msgstr ""
+
+#: page.php:82
+msgid "編集"
+msgstr ""
+
+#: page.php:116
+msgid "ページ %"
+msgstr ""
+
+#: page.php:127
+msgid "追加情報"
+msgstr ""
+
+#: page.php:145
+msgid "関連ページ"
+msgstr ""
+
+#: page.php:172
+msgid "詳細"
+msgstr ""
+
+#: page.php:209
+msgid "目次"
+msgstr ""
+
+#: page.php:217
+msgid "同じカテゴリのページ"
+msgstr ""
+
+#: page.php:237
+msgid "関連ページがありません。"
+msgstr ""
+
+#: page.php:248
+msgid "ご質問・ご相談"
+msgstr ""
+
+#: page.php:251
+msgid "お気軽にお問い合わせください"
+msgstr ""
+
+#: page.php:256
+msgid "お問い合わせ"
+msgstr ""
+
+#: page.php:284
+msgid "見出しがありません"
+msgstr ""
+
+#: search.php:25
+msgid "「%s」の検索結果"
+msgstr ""
+
+#: search.php:26
+msgid "検索結果"
+msgstr ""
+
+#: search.php:39
+msgid "該当する記事が見つかりませんでした"
+msgstr ""
+
+#: search.php:42
+msgid "%d 件見つかりました"
+msgid_plural "%d 件見つかりました"
+msgstr[0] ""
+msgstr[1] ""
+
+#: search.php:48
+msgid "該当する記事が見つかりませんでした"
+msgstr ""
+
+#: search.php:55
+msgid "キーワードを入力して再検索..."
+msgstr ""
+
+#: search.php:56
+msgid "検索キーワード"
+msgstr ""
+
+#: search.php:57
+msgid "検索実行"
+msgstr ""
+
+#: search.php:73
+msgid "カテゴリで絞り込み:"
+msgstr ""
+
+#: search.php:83
+msgid "すべて"
+msgstr ""
+
+#: search.php:103
+msgid "並び順を選択"
+msgstr ""
+
+#: search.php:107
+msgid "関連度順"
+msgstr ""
+
+#: search.php:108
+msgid "新しい順"
+msgstr ""
+
+#: search.php:109
+msgid "タイトル順"
+msgstr ""
+
+#: search.php:110
+msgid "更新日順"
+msgstr ""
+
+#: search.php:124
+msgid "%1$d 〜 %2$d 件目を表示（全 %3$d 件中）"
+msgstr ""
+
+#: search.php:150
+msgid "詳細を見る"
+msgstr ""
+
+#: search.php:155
+msgid "更新: %s"
+msgstr ""
+
+#: search.php:195
+msgid "続きを読む"
+msgstr ""
+
+#: search.php:221
+msgid "前へ"
+msgstr ""
+
+#: search.php:222
+msgid "次へ"
+msgstr ""
+
+#: search.php:250
+msgid "該当する記事が見つかりませんでした"
+msgstr ""
+
+#: search.php:253
+msgid "「%s」に一致する記事はありませんでした。"
+msgstr ""
+
+#: search.php:258
+msgid "検索のヒント"
+msgstr ""
+
+#: search.php:260
+msgid "キーワードを変更してみてください"
+msgstr ""
+
+#: search.php:261
+msgid "より一般的な用語を使用してみてください"
+msgstr ""
+
+#: search.php:262
+msgid "キーワードの数を減らしてみてください"
+msgstr ""
+
+#: search.php:263
+msgid "英語と日本語の両方で試してみてください"
+msgstr ""
+
+#: search.php:269
+msgid "人気の記事をご覧ください"
+msgstr ""
+
+#: search.php:296
+msgid "ホームに戻る"
+msgstr ""
+
+#: search.php:302
+msgid "コピペ集を見る"
+msgstr ""
+
+#: template-parts/content-card.php:37
+msgid "スニペット"
+msgstr ""
+
+#: template-parts/content-card.php:47
+msgid "初級"
+msgstr ""
+
+#: template-parts/content-card.php:48
+msgid "中級"
+msgstr ""
+
+#: template-parts/content-card.php:49
+msgid "上級"
+msgstr ""
+
+#: template-parts/content-card.php:93
+msgid "読了時間"
+msgstr ""
+
+#: template-parts/content-card.php:129
+msgid "コードを見る"
+msgstr ""
+
+#: template-parts/content-card.php:197
+msgid "いいね"
+msgstr ""
+
+#: template-parts/content-card.php:208
+msgid "コメント"
+msgstr ""
+
+#: template-parts/content-card.php:218
+msgid "詳細"
+msgstr ""
+
+#: template-parts/content-card.php:236
+msgid "コピペする"
+msgstr ""
+
+#: template-parts/content-card.php:238
+msgid "記事を読む"
+msgstr ""
+
+#: template-parts/content-list.php:37
+msgid "スニペット"
+msgstr ""
+
+#: template-parts/content-list.php:47
+msgid "初級"
+msgstr ""
+
+#: template-parts/content-list.php:48
+msgid "中級"
+msgstr ""
+
+#: template-parts/content-list.php:49
+msgid "上級"
+msgstr ""
+
+#: template-parts/content-list.php:81
+msgid "NEW"
+msgstr ""
+
+#: template-parts/content-list.php:215
+msgid "いいね"
+msgstr ""
+
+#: template-parts/content-list.php:224
+msgid "コピペ"
+msgstr ""
+
+#: template-parts/content-list.php:226
+msgid "続きを読む"
+msgstr ""
+
+#: template-parts/content-list.php:235
+msgid "ブックマーク"
+msgstr ""
