@@ -1,521 +1,698 @@
 <?php
 /**
- * Copipe Theme PostPilot v3 Functions
+ * Modern Copipe Theme functions and definitions
  * 
- * @package copipe-theme
- * @version 3.0.0
+ * @package Modern_Copipe_Theme
+ * @version 2.0.0
  */
 
-// Prevent direct access
+// 直接アクセス防止
 if (!defined('ABSPATH')) {
     exit;
 }
 
-// Define theme constants
-define('COPIPE_THEME_VERSION', '3.0.0');
+// テーマ定数定義
+define('COPIPE_THEME_VERSION', '2.0.0');
 define('COPIPE_THEME_PATH', get_template_directory());
 define('COPIPE_THEME_URL', get_template_directory_uri());
 
-/**
- * Theme setup
- */
-function copipe_theme_setup() {
-    // Make theme available for translation
-    load_theme_textdomain('copipe-theme', COPIPE_THEME_PATH . '/languages');
-
-    // Add default posts and comments RSS feed links to head
-    add_theme_support('automatic-feed-links');
-
-    // Let WordPress manage the document title
-    add_theme_support('title-tag');
-
-    // Enable support for Post Thumbnails on posts and pages
-    add_theme_support('post-thumbnails');
-    set_post_thumbnail_size(1200, 600, true);
-
-    // Add custom image sizes
-    add_image_size('copipe-hero', 1920, 800, true);
-    add_image_size('copipe-featured', 800, 400, true);
-    add_image_size('copipe-thumbnail', 300, 200, true);
-
-    // Switch default core markup to output valid HTML5
-    add_theme_support('html5', array(
-        'search-form',
-        'comment-form',
-        'comment-list',
-        'gallery',
-        'caption',
-    ));
-
-    // Set up the WordPress core custom background feature
-    add_theme_support('custom-background', apply_filters('copipe_custom_background_args', array(
-        'default-color' => 'ffffff',
-        'default-image' => '',
-    )));
-
-    // Add theme support for selective refresh for widgets
-    add_theme_support('customize-selective-refresh-widgets');
-
-    // Add support for core custom logo
-    add_theme_support('custom-logo', array(
-        'height'      => 80,
-        'width'       => 300,
-        'flex-width'  => true,
-        'flex-height' => true,
-    ));
-
-    // This theme uses wp_nav_menu() in multiple locations
-    register_nav_menus(array(
-        'primary' => esc_html__('Primary Menu', 'copipe-theme'),
-        'footer'  => esc_html__('Footer Menu', 'copipe-theme'),
-    ));
-
-    // Add support for Block Styles
-    add_theme_support('wp-block-styles');
-
-    // Add support for full and wide align images
-    add_theme_support('align-wide');
-
-    // Add support for editor styles
-    add_theme_support('editor-styles');
-
-    // Enqueue editor styles
-    add_editor_style('style-editor.css');
-
-    // Add custom editor font sizes
-    add_theme_support('editor-font-sizes', array(
-        array(
-            'name' => esc_html__('Small', 'copipe-theme'),
-            'size' => 14,
-            'slug' => 'small'
-        ),
-        array(
-            'name' => esc_html__('Regular', 'copipe-theme'),
-            'size' => 16,
-            'slug' => 'regular'
-        ),
-        array(
-            'name' => esc_html__('Large', 'copipe-theme'),
-            'size' => 20,
-            'slug' => 'large'
-        ),
-        array(
-            'name' => esc_html__('Extra Large', 'copipe-theme'),
-            'size' => 24,
-            'slug' => 'extra-large'
-        )
-    ));
-
-    // Disable custom colors in favor of theme colors
-    add_theme_support('disable-custom-colors');
-
-    // Add custom color palette
-    add_theme_support('editor-color-palette', array(
-        array(
-            'name'  => esc_html__('Primary Blue', 'copipe-theme'),
-            'slug'  => 'primary-blue',
-            'color' => '#2c5aa0',
-        ),
-        array(
-            'name'  => esc_html__('Secondary Orange', 'copipe-theme'),
-            'slug'  => 'secondary-orange',
-            'color' => '#ff6b35',
-        ),
-        array(
-            'name'  => esc_html__('Success Green', 'copipe-theme'),
-            'slug'  => 'success-green',
-            'color' => '#00c851',
-        ),
-        array(
-            'name'  => esc_html__('Dark Gray', 'copipe-theme'),
-            'slug'  => 'dark-gray',
-            'color' => '#333333',
-        ),
-        array(
-            'name'  => esc_html__('Light Gray', 'copipe-theme'),
-            'slug'  => 'light-gray',
-            'color' => '#f8f9fa',
-        ),
-        array(
-            'name'  => esc_html__('White', 'copipe-theme'),
-            'slug'  => 'white',
-            'color' => '#ffffff',
-        ),
-    ));
-}
-add_action('after_setup_theme', 'copipe_theme_setup');
-
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet
- */
-function copipe_content_width() {
-    $GLOBALS['content_width'] = apply_filters('copipe_content_width', 1200);
-}
-add_action('after_setup_theme', 'copipe_content_width', 0);
-
-/**
- * Register widget area
- */
-function copipe_widgets_init() {
-    register_sidebar(array(
-        'name'          => esc_html__('Sidebar', 'copipe-theme'),
-        'id'            => 'sidebar-1',
-        'description'   => esc_html__('Add widgets here.', 'copipe-theme'),
-        'before_widget' => '<section id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</section>',
-        'before_title'  => '<h3 class="widget-title">',
-        'after_title'   => '</h3>',
-    ));
-
-    register_sidebar(array(
-        'name'          => esc_html__('Footer Widget Area', 'copipe-theme'),
-        'id'            => 'footer-1',
-        'description'   => esc_html__('Add widgets here to appear in your footer.', 'copipe-theme'),
-        'before_widget' => '<section id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</section>',
-        'before_title'  => '<h3 class="widget-title">',
-        'after_title'   => '</h3>',
-    ));
-}
-add_action('widgets_init', 'copipe_widgets_init');
-
-/**
- * Enqueue scripts and styles
- */
-function copipe_scripts() {
-    // Main stylesheet
-    wp_enqueue_style('copipe-style', get_stylesheet_uri(), array(), COPIPE_THEME_VERSION);
-
-    // Google Fonts
-    wp_enqueue_style('copipe-fonts', 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap', array(), null);
-
-    // Main theme script
-    wp_enqueue_script('copipe-script', COPIPE_THEME_URL . '/js/theme.js', array('jquery'), COPIPE_THEME_VERSION, true);
-
-    // Comment reply script
-    if (is_singular() && comments_open() && get_option('thread_comments')) {
-        wp_enqueue_script('comment-reply');
-    }
-
-    // Mobile menu script
-    wp_enqueue_script('copipe-mobile-menu', COPIPE_THEME_URL . '/js/mobile-menu.js', array('jquery'), COPIPE_THEME_VERSION, true);
-
-    // LP専用UIkit読み込み（PostPilotページのみ）
-    if (is_page_template('page-postpilot.php') || is_page('postpilot')) {
-        wp_enqueue_style('uikit-css', 'https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css', array(), '3.17.11');
-        wp_enqueue_script('uikit-js', 'https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js', array(), '3.17.11', true);
-        wp_enqueue_script('uikit-icons', 'https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js', array('uikit-js'), '3.17.11', true);
-    }
-
-    // Localize script for AJAX
-    wp_localize_script('copipe-script', 'copipe_ajax', array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce'    => wp_create_nonce('copipe_nonce'),
-    ));
-}
-add_action('wp_enqueue_scripts', 'copipe_scripts');
-
-/**
- * Enqueue admin scripts and styles
- */
-function copipe_admin_scripts($hook) {
-    if ('appearance_page_copipe-settings' !== $hook) {
-        return;
-    }
-    
-    wp_enqueue_style('copipe-admin-style', COPIPE_THEME_URL . '/css/admin.css', array(), COPIPE_THEME_VERSION);
-    wp_enqueue_script('copipe-admin-script', COPIPE_THEME_URL . '/js/admin.js', array('jquery'), COPIPE_THEME_VERSION, true);
-}
-add_action('admin_enqueue_scripts', 'copipe_admin_scripts');
-
-/**
- * Custom post types
- */
-function copipe_register_post_types() {
-    // AI Prompt post type
-    register_post_type('ai_prompt', array(
-        'labels' => array(
-            'name'               => 'AI プロンプト',
-            'singular_name'      => 'AI プロンプト',
-            'add_new'            => '新規追加',
-            'add_new_item'       => '新しいAIプロンプトを追加',
-            'edit_item'          => 'AIプロンプトを編集',
-            'new_item'           => '新しいAIプロンプト',
-            'view_item'          => 'AIプロンプトを表示',
-            'search_items'       => 'AIプロンプトを検索',
-            'not_found'          => 'AIプロンプトが見つかりませんでした',
-            'not_found_in_trash' => 'ゴミ箱にAIプロンプトはありませんでした'
-        ),
-        'public'              => true,
-        'has_archive'         => true,
-        'publicly_queryable'  => true,
-        'query_var'           => true,
-        'rewrite'             => array('slug' => 'ai-prompt'),
-        'capability_type'     => 'post',
-        'hierarchical'        => false,
-        'supports'            => array('title', 'editor', 'excerpt', 'thumbnail', 'custom-fields'),
-        'menu_icon'           => 'dashicons-lightbulb',
-        'show_in_rest'        => true,
-    ));
-}
-add_action('init', 'copipe_register_post_types');
-
-/**
- * SEO and meta optimization
- */
-function copipe_meta_tags() {
-    global $post;
-    
-    if (is_home() || is_front_page()) {
-        $description = get_bloginfo('description');
-        $title = get_bloginfo('name');
-    } elseif (is_single() || is_page()) {
-        $description = get_the_excerpt();
-        $title = get_the_title();
+//--------------------------------------------------
+// 1. テーマセットアップ（強化版）
+//--------------------------------------------------
+if (!function_exists('copipe_setup')) {
+    function copipe_setup() {
+        // 翻訳ファイル読み込み
+        load_theme_textdomain('copipe-theme', COPIPE_THEME_PATH . '/languages');
         
-        // AIO SEO Proがアクティブな場合は、そちらに任せる
-        if (function_exists('aioseo')) {
-            return;
+        // テーマサポート追加
+        add_theme_support('title-tag');
+        add_theme_support('post-thumbnails');
+        add_theme_support('html5', [
+            'search-form', 'gallery', 'caption', 
+            'style', 'script', 'navigation-widgets'
+        ]);
+        add_theme_support('customize-selective-refresh-widgets');
+        add_theme_support('custom-logo');
+        add_theme_support('responsive-embeds');
+        add_theme_support('wp-block-styles');
+        add_theme_support('align-wide');
+        
+        // カスタム画像サイズ
+        add_image_size('copipe-thumbnail', 400, 300, true);
+        add_image_size('copipe-hero', 1200, 600, true);
+        add_image_size('copipe-card', 600, 400, true);
+    }
+}
+add_action('after_setup_theme', 'copipe_setup');
+
+//--------------------------------------------------
+// 2. モダンアセット読み込み（最適化版）
+//--------------------------------------------------
+if (!function_exists('copipe_enqueue_modern_assets')) {
+    function copipe_enqueue_modern_assets() {
+        // Google Fonts - Inter (モダンフォント)
+        wp_enqueue_style('google-fonts',
+            'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap',
+            [],
+            null
+        );
+        
+        // UIkit3（バージョン固定＋integrity追加）
+        wp_enqueue_style('uikit-css',
+            'https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css',
+            [],
+            '3.17.11'
+        );
+        
+        wp_enqueue_script('uikit-js',
+            'https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js',
+            [],
+            '3.17.11',
+            true
+        );
+        
+        wp_enqueue_script('uikit-icons',
+            'https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js',
+            ['uikit-js'],
+            '3.17.11',
+            true
+        );
+
+        // Prism.js（軽量化版）
+        wp_enqueue_style('prism-css',
+            'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css',
+            [],
+            '1.29.0'
+        );
+        
+        wp_enqueue_script('prism-core',
+            'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js',
+            [],
+            '1.29.0',
+            true
+        );
+        
+        // 必要な言語のみ読み込み
+        $languages = ['php', 'javascript', 'css', 'markup', 'json', 'sql'];
+        foreach ($languages as $lang) {
+            wp_enqueue_script("prism-{$lang}",
+                "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-{$lang}.min.js",
+                ['prism-core'],
+                '1.29.0',
+                true
+            );
         }
-    } else {
-        return;
-    }
-    
-    // Remove extra whitespace
-    $description = trim(preg_replace('/\s+/', ' ', strip_tags($description)));
-    
-    if ($description && !function_exists('aioseo')) {
-        echo '<meta name="description" content="' . esc_attr($description) . '">' . "\n";
-    }
-    
-    // Open Graph tags
-    if (!function_exists('aioseo')) {
-        echo '<meta property="og:title" content="' . esc_attr($title) . '">' . "\n";
-        echo '<meta property="og:description" content="' . esc_attr($description) . '">' . "\n";
-        echo '<meta property="og:type" content="' . (is_single() ? 'article' : 'website') . '">' . "\n";
-        echo '<meta property="og:url" content="' . esc_url(get_permalink()) . '">' . "\n";
         
-        if (has_post_thumbnail() && (is_single() || is_page())) {
-            $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
-            if ($thumbnail) {
-                echo '<meta property="og:image" content="' . esc_url($thumbnail[0]) . '">' . "\n";
+        // Prismプラグイン
+        $plugins = [
+            'line-numbers' => true,
+            'toolbar' => true,
+            'copy-to-clipboard' => true,
+            'line-highlight' => true,
+            'show-language' => true
+        ];
+        
+        foreach ($plugins as $plugin => $load_css) {
+            if ($load_css) {
+                wp_enqueue_style("prism-{$plugin}-css",
+                    "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/{$plugin}/prism-{$plugin}.css",
+                    [],
+                    '1.29.0'
+                );
             }
-        }
-    }
-    
-    // Twitter Card tags
-    if (!function_exists('aioseo')) {
-        echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
-        echo '<meta name="twitter:title" content="' . esc_attr($title) . '">' . "\n";
-        echo '<meta name="twitter:description" content="' . esc_attr($description) . '">' . "\n";
-    }
-}
-add_action('wp_head', 'copipe_meta_tags');
-
-/**
- * Custom excerpt length
- */
-function copipe_excerpt_length($length) {
-    return 40;
-}
-add_filter('excerpt_length', 'copipe_excerpt_length');
-
-/**
- * Custom excerpt more text
- */
-function copipe_excerpt_more($more) {
-    return '...';
-}
-add_filter('excerpt_more', 'copipe_excerpt_more');
-
-/**
- * Add breadcrumb support
- */
-function copipe_breadcrumb() {
-    if (is_front_page()) {
-        return;
-    }
-    
-    $breadcrumb = '<nav class="breadcrumb" aria-label="breadcrumb">';
-    $breadcrumb .= '<ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">';
-    
-    // Home link
-    $breadcrumb .= '<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
-    $breadcrumb .= '<a href="' . home_url() . '" itemprop="item"><span itemprop="name">ホーム</span></a>';
-    $breadcrumb .= '<meta itemprop="position" content="1" />';
-    $breadcrumb .= '</li>';
-    
-    $position = 2;
-    
-    if (is_category()) {
-        $category = get_queried_object();
-        $breadcrumb .= '<li class="breadcrumb-item active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
-        $breadcrumb .= '<span itemprop="name">' . $category->name . '</span>';
-        $breadcrumb .= '<meta itemprop="position" content="' . $position . '" />';
-        $breadcrumb .= '</li>';
-    } elseif (is_single()) {
-        $categories = get_the_category();
-        if (!empty($categories)) {
-            $category = $categories[0];
-            $breadcrumb .= '<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
-            $breadcrumb .= '<a href="' . get_category_link($category->term_id) . '" itemprop="item"><span itemprop="name">' . $category->name . '</span></a>';
-            $breadcrumb .= '<meta itemprop="position" content="' . $position . '" />';
-            $breadcrumb .= '</li>';
-            $position++;
+            
+            wp_enqueue_script("prism-{$plugin}-js",
+                "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/{$plugin}/prism-{$plugin}.min.js",
+                ['prism-core'],
+                '1.29.0',
+                true
+            );
         }
         
-        $breadcrumb .= '<li class="breadcrumb-item active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
-        $breadcrumb .= '<span itemprop="name">' . get_the_title() . '</span>';
-        $breadcrumb .= '<meta itemprop="position" content="' . $position . '" />';
-        $breadcrumb .= '</li>';
-    } elseif (is_page()) {
-        $breadcrumb .= '<li class="breadcrumb-item active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
-        $breadcrumb .= '<span itemprop="name">' . get_the_title() . '</span>';
-        $breadcrumb .= '<meta itemprop="position" content="' . $position . '" />';
-        $breadcrumb .= '</li>';
+        // テーマ独自CSS
+        wp_enqueue_style('copipe-style',
+            COPIPE_THEME_URL . '/style.css',
+            ['uikit-css', 'google-fonts'],
+            COPIPE_THEME_VERSION
+        );
+        
+        // カスタムJS（強化版）
+        wp_enqueue_script('copipe-modern-script',
+            COPIPE_THEME_URL . '/assets/js/modern-copipe.js',
+            ['uikit-js'],
+            COPIPE_THEME_VERSION,
+            true
+        );
+        
+        // スクリプトにデータを渡す
+        wp_localize_script('copipe-modern-script', 'copipeAjax', [
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('copipe_nonce'),
+            'strings' => [
+                'copy_success' => __('コピーしました！', 'copipe-theme'),
+                'copy_error' => __('コピーに失敗しました', 'copipe-theme'),
+                'loading' => __('読み込み中...', 'copipe-theme')
+            ]
+        ]);
     }
-    
-    $breadcrumb .= '</ol>';
-    $breadcrumb .= '</nav>';
-    
-    return $breadcrumb;
 }
+add_action('wp_enqueue_scripts', 'copipe_enqueue_modern_assets');
 
-/**
- * Performance optimizations
- */
-function copipe_performance_optimizations() {
-    // Remove query strings from static resources
-    if (!is_admin()) {
-        add_filter('script_loader_src', 'copipe_remove_query_strings', 15, 1);
-        add_filter('style_loader_src', 'copipe_remove_query_strings', 15, 1);
+//--------------------------------------------------
+// 3. パフォーマンス最適化
+//--------------------------------------------------
+
+// defer / async 属性を自動付与
+add_filter( 'script_loader_tag', function( $tag, $handle ){
+    $defer_scripts = ['copipe-modern-script', 'prism-core', 'uikit-js'];
+    if ( in_array( $handle, $defer_scripts ) ) {
+        return str_replace( ' src', ' defer src', $tag );
     }
-    
-    // Disable emojis
-    remove_action('wp_head', 'print_emoji_detection_script', 7);
-    remove_action('wp_print_styles', 'print_emoji_styles');
-    remove_action('admin_print_scripts', 'print_emoji_detection_script');
-    remove_action('admin_print_styles', 'print_emoji_styles');
-    remove_filter('the_content_feed', 'wp_staticize_emoji');
-    remove_filter('comment_text_rss', 'wp_staticize_emoji');
-    remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
-    
-    // Remove unnecessary meta tags
-    remove_action('wp_head', 'wp_generator');
-    remove_action('wp_head', 'wlwmanifest_link');
-    remove_action('wp_head', 'rsd_link');
-    remove_action('wp_head', 'wp_shortlink_wp_head');
-}
-add_action('init', 'copipe_performance_optimizations');
+    return $tag;
+}, 10, 2 );
 
-/**
- * Remove query strings from static resources
- */
-function copipe_remove_query_strings($src) {
-    $rqs = explode('?ver', $src);
-    return $rqs[0];
-}
-
-/**
- * Custom admin settings page
- */
-function copipe_admin_menu() {
-    add_theme_page(
-        'テーマ設定',
-        'テーマ設定',
-        'manage_options',
-        'copipe-settings',
-        'copipe_settings_page'
+// 画像の lazy loading と WebP対応
+add_filter( 'the_content', function( $content ){
+    // Lazy loading
+    $content = preg_replace( '/<img /', '<img loading="lazy" ', $content );
+    
+    // WebP対応（ブラウザサポート確認）
+    $content = preg_replace_callback(
+        '/<img([^>]+)src=["\']([^"\']+\.(jpg|jpeg|png))["\']([^>]*)>/i',
+        function($matches) {
+            $webp_url = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $matches[2]);
+            // WebP画像が存在する場合のみ置換
+            if (file_exists(str_replace(home_url(), ABSPATH, $webp_url))) {
+                return sprintf(
+                    '<picture><source srcset="%s" type="image/webp"><img%s src="%s"%s></picture>',
+                    $webp_url,
+                    $matches[1],
+                    $matches[2],
+                    $matches[4]
+                );
+            }
+            return $matches[0];
+        },
+        $content
     );
-}
-add_action('admin_menu', 'copipe_admin_menu');
+    
+    return $content;
+}, 20 );
 
-/**
- * Settings page content
- */
-function copipe_settings_page() {
+// 重要でないCSSの遅延読み込み
+add_action('wp_head', function() {
+    echo '<style>
+        /* Critical CSS - Above the fold styles */
+        body { 
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .modern-navbar { 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+    </style>';
+}, 1);
+
+//--------------------------------------------------
+// 4. モダンOGP対応
+//--------------------------------------------------
+add_action( 'wp_head', function() {
+    if ( is_singular() ) {
+        $title = get_the_title();
+        $desc = get_the_excerpt() ?: wp_trim_words(strip_tags(get_the_content()), 30);
+        $url = get_permalink();
+        $type = 'article';
+        $image = get_the_post_thumbnail_url(null, 'copipe-hero') ?: COPIPE_THEME_URL . '/assets/img/default-og.jpg';
+    } else {
+        $title = get_bloginfo('name');
+        $desc = get_bloginfo('description');
+        $url = home_url();
+        $type = 'website';
+        $image = COPIPE_THEME_URL . '/assets/img/default-og.jpg';
+    }
     ?>
-    <div class="wrap">
-        <h1>Copipe Theme 設定</h1>
-        <form method="post" action="options.php">
-            <?php
-            settings_fields('copipe_settings_group');
-            do_settings_sections('copipe_settings_group');
-            ?>
-            <table class="form-table">
-                <tr>
-                    <th scope="row">LINE誘導URL</th>
-                    <td>
-                        <input type="url" name="copipe_line_url" value="<?php echo esc_attr(get_option('copipe_line_url')); ?>" class="regular-text" />
-                        <p class="description">LPでのLINE誘導先URLを設定してください。</p>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Google Analytics ID</th>
-                    <td>
-                        <input type="text" name="copipe_ga_id" value="<?php echo esc_attr(get_option('copipe_ga_id')); ?>" class="regular-text" />
-                        <p class="description">Google Analytics測定IDを入力してください（例: G-XXXXXXXXXX）。</p>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">フッターコピーライト</th>
-                    <td>
-                        <input type="text" name="copipe_copyright" value="<?php echo esc_attr(get_option('copipe_copyright', '© 2025 Numaken. All rights reserved.')); ?>" class="regular-text" />
-                    </td>
-                </tr>
-            </table>
-            <?php submit_button(); ?>
-        </form>
-    </div>
+    <!-- Enhanced OGP -->
+    <meta property="og:title" content="<?php echo esc_attr( $title ); ?>">
+    <meta property="og:description" content="<?php echo esc_attr( $desc ); ?>">
+    <meta property="og:type" content="<?php echo esc_attr( $type ); ?>">
+    <meta property="og:url" content="<?php echo esc_url( $url ); ?>">
+    <meta property="og:site_name" content="<?php bloginfo('name'); ?>">
+    <meta property="og:image" content="<?php echo esc_url( $image ); ?>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo esc_attr( $title ); ?>">
+    <meta name="twitter:description" content="<?php echo esc_attr( $desc ); ?>">
+    <meta name="twitter:image" content="<?php echo esc_url( $image ); ?>">
+    
+    <!-- Additional Meta -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="msapplication-TileColor" content="#667eea">
     <?php
-}
+});
 
-/**
- * Register settings
- */
-function copipe_admin_init() {
-    register_setting('copipe_settings_group', 'copipe_line_url');
-    register_setting('copipe_settings_group', 'copipe_ga_id');
-    register_setting('copipe_settings_group', 'copipe_copyright');
-}
-add_action('admin_init', 'copipe_admin_init');
-
-/**
- * Add Google Analytics
- */
-function copipe_google_analytics() {
-    $ga_id = get_option('copipe_ga_id');
-    if ($ga_id && !is_admin() && !current_user_can('manage_options')) {
+//--------------------------------------------------
+// 5. 強化されたJSON-LD
+//--------------------------------------------------
+add_action( 'wp_head', function() {
+    if ( is_single() ) {
+        $author = get_the_author();
+        $author_url = get_author_posts_url(get_the_author_meta('ID'));
+        $image = get_the_post_thumbnail_url(null, 'copipe-hero') ?: COPIPE_THEME_URL . '/assets/img/default-article.jpg';
         ?>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr($ga_id); ?>"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '<?php echo esc_attr($ga_id); ?>');
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "<?php the_permalink(); ?>"
+            },
+            "headline": "<?php echo esc_js(get_the_title()); ?>",
+            "image": {
+                "@type": "ImageObject",
+                "url": "<?php echo esc_url($image); ?>",
+                "width": 1200,
+                "height": 600
+            },
+            "datePublished": "<?php echo get_the_date('c'); ?>",
+            "dateModified": "<?php echo get_the_modified_date('c'); ?>",
+            "author": {
+                "@type": "Person",
+                "name": "<?php echo esc_js($author); ?>",
+                "url": "<?php echo esc_url($author_url); ?>"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "<?php bloginfo('name'); ?>",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "<?php echo esc_url(COPIPE_THEME_URL . '/assets/img/logo.png'); ?>"
+                }
+            },
+            "description": "<?php echo esc_js(get_the_excerpt() ?: wp_trim_words(strip_tags(get_the_content()), 30)); ?>",
+            "wordCount": "<?php echo str_word_count(strip_tags(get_the_content())); ?>",
+            "keywords": "<?php echo esc_js(implode(', ', wp_get_post_tags(get_the_ID(), ['fields' => 'names']))); ?>"
+        }
         </script>
         <?php
     }
+});
+
+//--------------------------------------------------
+// 6. ナビメニュー強化
+//--------------------------------------------------
+if (!function_exists('copipe_register_menus')) {
+    function copipe_register_menus() {
+        register_nav_menus([
+            'primary' => __( 'Primary Menu', 'copipe-theme' ),
+            'footer' => __( 'Footer Menu', 'copipe-theme' ),
+            'social' => __( 'Social Links', 'copipe-theme' )
+        ]);
+    }
 }
-add_action('wp_head', 'copipe_google_analytics');
+add_action( 'after_setup_theme', 'copipe_register_menus' );
 
-/**
- * Include customizer settings
- */
-require_once get_template_directory() . '/inc/customizer.php';
+//--------------------------------------------------
+// 7. カスタムポストタイプ（コードスニペット用）
+//--------------------------------------------------
+function copipe_register_code_snippets() {
+    $labels = [
+        'name' => 'Code Snippets',
+        'singular_name' => 'Code Snippet',
+        'add_new' => 'Add New Snippet',
+        'add_new_item' => 'Add New Code Snippet',
+        'edit_item' => 'Edit Code Snippet',
+        'new_item' => 'New Code Snippet',
+        'view_item' => 'View Code Snippet',
+        'search_items' => 'Search Code Snippets',
+        'not_found' => 'No code snippets found',
+        'not_found_in_trash' => 'No code snippets found in trash'
+    ];
 
-/**
- * Include admin settings
- */
-require_once get_template_directory() . '/inc/admin-settings.php';
+    register_post_type('code_snippet', [
+        'labels' => $labels,
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-editor-code',
+        'supports' => ['title', 'editor', 'excerpt', 'thumbnail', 'comments'],
+        'rewrite' => ['slug' => 'snippets'],
+        'show_in_rest' => true
+    ]);
+}
+add_action('init', 'copipe_register_code_snippets');
 
-/**
- * Custom template tags for this theme
- */
-require_once get_template_directory() . '/inc/template-tags.php';
+//--------------------------------------------------
+// 8. 設定取得関数（拡張版）
+//--------------------------------------------------
+function copipe_get_option($key, $default = '') {
+    $options = get_option('copipe_theme_options', []);
+    return isset($options[$key]) ? $options[$key] : $default;
+}
 
-/**
- * Functions which enhance the theme by hooking into WordPress
- */
-require_once get_template_directory() . '/inc/template-functions.php';
+function copipe_get_adsense_client() {
+    return copipe_get_option('adsense_client', '');
+}
+
+function copipe_get_adsense_slots() {
+    $slots = copipe_get_option('adsense_slots', []);
+    return !empty($slots) ? $slots : [
+        'header' => '',
+        'content' => '',
+        'footer' => '',
+        'sidebar' => ''
+    ];
+}
+
+//--------------------------------------------------
+// 9. AJAX機能（動的コンテンツ読み込み）
+//--------------------------------------------------
+function copipe_load_more_posts() {
+    check_ajax_referer('copipe_nonce', 'nonce');
+    
+    $page = intval($_POST['page']);
+    $category = sanitize_text_field($_POST['category']);
+    
+    $args = [
+        'post_type' => 'post',
+        'posts_per_page' => 6,
+        'paged' => $page,
+        'post_status' => 'publish'
+    ];
+    
+    if (!empty($category)) {
+        $args['category_name'] = $category;
+    }
+    
+    $query = new WP_Query($args);
+    
+    if ($query->have_posts()) {
+        ob_start();
+        while ($query->have_posts()) {
+            $query->the_post();
+            get_template_part('template-parts/content', 'card');
+        }
+        $content = ob_get_clean();
+        wp_reset_postdata();
+        
+        wp_send_json_success([
+            'content' => $content,
+            'max_pages' => $query->max_num_pages
+        ]);
+    } else {
+        wp_send_json_error('No more posts found');
+    }
+}
+add_action('wp_ajax_load_more_posts', 'copipe_load_more_posts');
+add_action('wp_ajax_nopriv_load_more_posts', 'copipe_load_more_posts');
+
+//--------------------------------------------------
+// 10. セキュリティ強化（モダン版）
+//--------------------------------------------------
+
+// 不要なWordPress情報の削除
+remove_action('wp_head', 'wp_generator');
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'wp_shortlink_wp_head');
+
+// XMLRPCの無効化
+add_filter('xmlrpc_enabled', '__return_false');
+
+// REST API制限
+add_filter('rest_authentication_errors', function($result) {
+    if (!is_user_logged_in()) {
+        return new WP_Error('rest_disabled', __('REST API access restricted'), ['status' => 401]);
+    }
+    return $result;
+});
+
+// ファイルアップロード制限
+add_filter('upload_mimes', function($mimes) {
+    // セキュリティのため危険なファイル形式を除外
+    unset($mimes['exe'], $mimes['bat'], $mimes['cmd'], $mimes['com'], $mimes['pif'], $mimes['scr'], $mimes['vbs'], $mimes['ws']);
+    return $mimes;
+});
+
+//--------------------------------------------------
+// 11. カスタマイザー設定（既存ファイルを使用）
+//--------------------------------------------------
+// カスタマイザー設定は inc/customizer.php で管理
+// 重複を避けるためここでは定義しない
+
+//--------------------------------------------------
+// 12. 既存機能（互換性維持）
+//--------------------------------------------------
+
+// カテゴリ設定
+function copipe_modify_copipe_archive($query) {
+    if (!is_admin() && $query->is_main_query()) {
+        if (is_category('copipe')) {
+            $query->set('posts_per_page', 
+                copipe_get_option('copipe_posts_per_page', 10)
+            );
+        }
+    }
+}
+add_action('pre_get_posts', 'copipe_modify_copipe_archive');
+
+// AdSenseショートコード（セキュア版）
+function copipe_register_adsense_shortcode() {
+    add_shortcode('adsense', function($atts) {
+        $client = copipe_get_adsense_client();
+        if (empty($client)) {
+            return '<!-- AdSense client not configured -->';
+        }
+        
+        $a = shortcode_atts([
+            'slot' => '',
+            'format' => 'auto',
+            'responsive' => 'true',
+            'style' => 'display:block'
+        ], $atts, 'adsense');
+        
+        if (empty($a['slot'])) {
+            return '<!-- AdSense slot not specified -->';
+        }
+        
+        // セキュリティ強化
+        $allowed_formats = ['auto', 'rectangle', 'vertical', 'horizontal'];
+        if (!in_array($a['format'], $allowed_formats)) {
+            $a['format'] = 'auto';
+        }
+        
+        return sprintf(
+            '<div class="copipe-adsense uk-margin-medium modern-ad-container">
+              <ins class="adsbygoogle"
+                   style="%5$s"
+                   data-ad-client="%1$s"
+                   data-ad-slot="%2$s"
+                   data-ad-format="%3$s"
+                   data-full-width-responsive="%4$s"></ins>
+              <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>',
+            esc_attr($client),
+            esc_attr($a['slot']),
+            esc_attr($a['format']),
+            esc_attr($a['responsive']),
+            esc_attr($a['style'])
+        );
+    });
+}
+add_action('init', 'copipe_register_adsense_shortcode');
+
+// 埋め込みオブジェクトを HTML5 タグに置換
+if (!function_exists('copipe_replace_embeds_with_html5')) {
+    add_filter( 'the_content', 'copipe_replace_embeds_with_html5', 20 );
+    function copipe_replace_embeds_with_html5( $content ) {
+        // <object data="…"></object> を video タグに置換
+        $content = preg_replace_callback(
+            '/<object[^>]+data=["\']([^"\']+)["\'][^>]*>.*?<\/object>/is',
+            function( $matches ) {
+                $url = esc_url( $matches[1] );
+                if ( preg_match( '/\.(mp4|webm|ogg)$/i', $url, $m ) ) {
+                    $type = 'video/' . strtolower( $m[1] );
+                    return sprintf(
+                        '<div class="modern-video-wrapper"><video controls preload="metadata" class="modern-video"><source src="%1$s" type="%2$s">Your browser does not support the video tag.</video></div>',
+                        $url,
+                        $type
+                    );
+                }
+                return '';
+            },
+            $content
+        );
+
+        // <embed src="…"> を audio/video タグに置換
+        $content = preg_replace_callback(
+            '/<embed[^>]+src=["\']([^"\']+)["\'][^>]*>/is',
+            function( $matches ) {
+                $url = esc_url( $matches[1] );
+                if ( preg_match( '/\.(mp3|wav)$/i', $url, $m ) ) {
+                    $type = 'audio/' . strtolower( $m[1] );
+                    return sprintf(
+                        '<div class="modern-audio-wrapper"><audio controls preload="metadata" class="modern-audio"><source src="%1$s" type="%2$s">Your browser does not support the audio tag.</audio></div>',
+                        $url,
+                        $type
+                    );
+                }
+                if ( preg_match( '/\.(mp4|webm|ogg)$/i', $url, $m ) ) {
+                    $type = 'video/' . strtolower( $m[1] );
+                    return sprintf(
+                        '<div class="modern-video-wrapper"><video controls preload="metadata" class="modern-video"><source src="%1$s" type="%2$s">Your browser does not support the video tag.</video></div>',
+                        $url,
+                        $type
+                    );
+                }
+                return ''; 
+            },
+            $content
+        );
+
+        return $content;
+    }
+}
+
+// ファイル読み込み（重複チェック付き）
+$include_files = [
+    '/inc/admin-settings.php',
+    '/inc/utils.php', 
+    '/inc/ajax-functions.php',
+    '/inc/customizer.php'
+];
+
+foreach ($include_files as $file) {
+    $file_path = get_template_directory() . $file;
+    if (file_exists($file_path)) {
+        require_once $file_path;
+    }
+}
+
+//--------------------------------------------------
+// 13. モダンCSS変数の出力
+//--------------------------------------------------
+add_action('wp_head', function() {
+    $primary_color = get_theme_mod('primary_color', '#667eea');
+    $font_size = get_theme_mod('body_font_size', 16);
+    ?>
+    <style>
+        :root {
+            --primary-color: <?php echo esc_attr($primary_color); ?>;
+            --body-font-size: <?php echo esc_attr($font_size); ?>px;
+            --primary-gradient: linear-gradient(135deg, <?php echo esc_attr($primary_color); ?> 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --warning-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow-elevation: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .modern-video-wrapper,
+        .modern-audio-wrapper {
+            margin: 2rem 0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-elevation);
+        }
+        
+        .modern-video,
+        .modern-audio {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .modern-ad-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+    <?php
+}, 5);
+
+// 管理バーのスタイル調整
+add_action('wp_head', function() {
+    if (is_admin_bar_showing()) {
+        echo '<style>
+            html { margin-top: 32px !important; }
+            @media screen and (max-width: 782px) {
+                html { margin-top: 46px !important; }
+            }
+        </style>';
+    }
+});
+
+
+
+
+//--20250729追加　
+
+function copipe_body_classes($classes) {
+    // 条件に応じたクラスを追加
+    return $classes;
+}
+add_filter('body_class', 'copipe_body_classes');
+
+function copipe_post_classes($classes) {
+    // 投稿の特徴に応じたクラスを追加
+    return $classes;
+}
+add_filter('post_class', 'copipe_post_classes');
+
+function copipe_custom_excerpt_length($length) {
+    return get_theme_mod('copipe_excerpt_length', 120);  // デフォルトは120文字
+}
+add_filter('excerpt_length', 'copipe_custom_excerpt_length', 999);
+
+function copipe_wp_title_filter($title, $sep) {
+    // ページ番号やアーカイブタイトルにカスタマイズ
+    return $title;
+}
+add_filter('wp_title', 'copipe_wp_title_filter', 10, 2);
+
+function copipe_comment_form_defaults($defaults) {
+    // コメントフォームのデフォルト設定を変更
+    return $defaults;
+}
+add_filter('comment_form_defaults', 'copipe_comment_form_defaults');
+
+function copipe_add_lazy_loading($attr, $attachment, $size) {
+    if (!is_admin() && !is_feed()) {
+        $attr['loading'] = 'lazy';  // 遅延読み込み
+    }
+    return $attr;
+}
+add_filter('wp_get_attachment_image_attributes', 'copipe_add_lazy_loading', 10, 3);
+
+function copipe_custom_posts_per_page($query) {
+    if (!is_admin() && $query->is_main_query() && is_post_type_archive('ai_prompt')) {
+        $query->set('posts_per_page', 12);  // 1ページあたり12件
+    }
+}
+add_action('pre_get_posts', 'copipe_custom_posts_per_page');
+
+
+
+
+
+
+
+
+
+
+
+
+?>
