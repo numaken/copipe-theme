@@ -1,0 +1,15 @@
+# WordPress core を無視
+/wp-admin/
+/wp-includes/
+index.php
+wp-config.php
+.htaccess
+
+# OS
+.DS_Store
+Thumbs.db
+
+# その他
+*.log
+*.zip
+*.bak
